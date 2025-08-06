@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -27,6 +27,7 @@
       max-width: 900px;
       margin: 0 auto;
       padding: 20px;
+      transition: background-color 0.3s;
     }
 
     h1, h2, h3 {
@@ -55,7 +56,7 @@
       color: var(--secondary);
     }
 
-    p {
+    p, li, ul, blockquote {
       margin: 1.2rem 0;
     }
 
@@ -66,6 +67,26 @@
 
     a:hover {
       text-decoration: underline;
+    }
+
+    .lang-switcher {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .lang-switcher button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 0 5px;
+      border-radius: 4px;
+    }
+
+    .lang-switcher button:hover {
+      background: var(--secondary);
     }
 
     .subtitle {
@@ -110,6 +131,13 @@
       margin: 0.6rem 0;
     }
 
+    blockquote {
+      border-left: 3px solid var(--secondary);
+      padding-left: 15px;
+      margin: 1.5rem 0;
+      font-style: italic;
+    }
+
     footer {
       margin-top: 60px;
       padding-top: 20px;
@@ -117,6 +145,23 @@
       color: var(--gray);
       font-size: 0.9rem;
       text-align: center;
+    }
+
+    /* Arabic-specific styles */
+    [data-lang="ar"] {
+      font-family: 'Amiri', 'Scheherazade New', 'Segoe UI', serif;
+      text-align: right;
+      direction: rtl;
+    }
+
+    /* Hide all language elements by default */
+    [data-lang] {
+      display: none;
+    }
+
+    /* Show active language */
+    .active-lang {
+      display: block !important;
     }
 
     @media (max-width: 768px) {
@@ -131,248 +176,412 @@
         font-size: 1.1rem;
       }
     }
+
+    /* Optional: Load Arabic fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Amiri&family=Scheherazade+New:wght@400;700&display=swap');
   </style>
 </head>
 <body>
+  <!-- Language Switcher -->
+  <div class="lang-switcher">
+    <button onclick="setLanguage('en')">English</button>
+    <button onclick="setLanguage('ar')">العربية</button>
+  </div>
 
   <!-- Title -->
-  <h1>The Myth of<br>Decentralization<br>as We Know It</h1>
+  <h1>
+    <span data-lang="en">The Myth of<br>Decentralization<br>as We Know It</span>
+    <span data-lang="ar">وهم اللامركزية كما نعرفه</span>
+  </h1>
 
   <!-- Subtitle -->
   <div class="subtitle">
-    A Critical Examination of Bitcoin, Stablecoins, and the Hidden Centralization of Digital Finance
+    <span data-lang="en">A Critical Examination of Bitcoin, Stablecoins, and the Hidden Centralization of Digital Finance</span>
+    <span data-lang="ar">تحليل نقدي لبتكوين والعملات المستقرة واللامركزية المخفية في التمويل الرقمي</span>
   </div>
 
   <!-- Author & Date -->
-  <div class="author">By Omar Alsaadi</div>
-  <div class="date">Published on May 5, 2025</div>
+  <div class="author">
+    <span data-lang="en">By Omar Alsaadi</span>
+    <span data-lang="ar">بقلم عمر السعدي</span>
+  </div>
+  <div class="date">
+    <span data-lang="en">Published on May 5, 2025</span>
+    <span data-lang="ar">نُشر في 5 مايو 2025</span>
+  </div>
 
   <!-- Epigraph -->
   <div class="epigraph">
-    For those who question the narrative.<br>
-    Because truth is the foundation of real freedom.
+    <span data-lang="en">For those who question the narrative.<br>Becuse truth is the foundation of real freedom.</span>
+    <span data-lang="ar">لأولئك الذين يشككون في الرواية.<br>لأن الحقيقة هي أساس الحرية الحقيقية.</span>
   </div>
 
   <!-- Essay Body -->
-  <h2>Introduction: The Promise of Freedom</h2>
+  <h2>
+    <span data-lang="en">Introduction: The Promise of Freedom</span>
+    <span data-lang="ar">المقدمة: وعود الحرية</span>
+  </h2>
   <p>
-    In the aftermath of the 2008 financial crisis, a mysterious figure named Satoshi Nakamoto released a whitepaper titled <em>“Bitcoin: A Peer-to-Peer Electronic Cash System.”</em> It promised a radical vision: a <strong>decentralized, borderless, censorship-resistant digital currency</strong> that would liberate money from banks, governments, and central planners.
+    <span data-lang="en">In the aftermath of the 2008 financial crisis, a mysterious figure named Satoshi Nakamoto released a whitepaper titled <em>“Bitcoin: A Peer-to-Peer Electronic Cash System.”</em> It promised a radical vision: a <strong>decentralized, borderless, censorship-resistant digital currency</strong> that would liberate money from banks, governments, and central planners.</span>
+    <span data-lang="ar">في أعقاب الأزمة المالية لعام 2008، أصدر شخص غامض يُدعى ساتوشي ناكاموتو ورقة بيضاء بعنوان "بتكوين: نظام نقدي إلكتروني ند لنظير". وعدت برؤية جذرية: عملة رقمية <strong>لامركزية، لا حدود لها، ومقاومة للرقابة</strong> تحرر المال من البنوك والحكومات ومخططي الاقتصاد المركزي.</span>
   </p>
   <p>
-    For over a decade, this idea has captivated technologists, libertarians, investors, and revolutionaries. Bitcoin was hailed as the first truly <strong>sovereign money</strong> — not issued by a state, not controlled by a central bank, but secured by math and maintained by a global network of equals.
+    <span data-lang="en">For over a decade, this idea has captivated technologists, libertarians, investors, and revolutionaries. Bitcoin was hailed as the first truly <strong>sovereign money</strong> — not issued by a state, not controlled by a central bank, but secured by math and maintained by a global network of equals.</span>
+    <span data-lang="ar">على مدار أكثر من عقد، استحوذت هذه الفكرة على عقول التقنيين والليبرتاريين والمستثمرين والثوريين. وُصف البيتكوين بأنه أول عملة <strong>ذات سيادة حقيقية</strong> – لا تصدرها دولة، ولا تتحكم بها بنك مركزي، بل تُؤمن بالرياضيات ويُحافظ عليها شبكة عالمية من الأنداد.</span>
   </p>
   <p>
-    But what if this vision was never realized?  
-    What if, beneath the rhetoric of decentralization, we built a system that is <strong>just as centralized as the one it sought to replace</strong> — only more opaque, less accountable, and still deeply dependent on the very powers it claims to defy?
+    <span data-lang="en">But what if this vision was never realized?  
+    What if, beneath the rhetoric of decentralization, we built a system that is <strong>just as centralized as the one it sought to replace</strong> — only more opaque, less accountable, and still deeply dependent on the very powers it claims to defy?</span>
+    <span data-lang="ar">لكن ماذا لو لم تتحقق هذه الرؤية أبداً؟  
+    ماذا لو أن النظام الذي بُنِيَ تحت شعار اللامركزية كان في الحقيقة <strong>مركزياً بذات القدر الذي يسعى لاستبداله</strong> – فقط بدرجة أكبر من الغموض، وانخفاض في المساءلة، واعتماد عميق على السلطات التي يدّعي التمرد عليها؟</span>
   </p>
   <p>
-    This essay argues that <strong>decentralization, as currently practiced in cryptocurrency, is largely a myth</strong> — one carefully constructed by ideology, obscured by technology, and sustained by the hidden dominance of the United States financial and technological infrastructure.
+    <span data-lang="en">This essay argues that <strong>decentralization, as currently practiced in cryptocurrency, is largely a myth</strong> — one carefully constructed by ideology, obscured by technology, and sustained by the hidden dominance of the United States financial and technological infrastructure.</span>
+    <span data-lang="ar">يدور هذا المقال حول فكرة أن <strong>اللامركزية، كما تُمارس حالياً في العملات الرقمية، هي إلى حد كبير وهم</strong> – تم بناؤه بعناية عبر الأيديولوجيا، وتم إخفاؤه بالتقنية، ويُبقيه هيمنة البنية التحتية المالية والتكنولوجية الأمريكية المخفية.</span>
   </p>
   <p>
-    From Bitcoin’s reliance on NSA cryptography to stablecoins’ entanglement with U.S. Treasury debt, the so-called “decentralized” financial revolution is, in reality, <strong>a new chapter in American financial hegemony</strong> — digitized, tokenized, and repackaged for the 21st century.
-  </p>
-
-  <h2>I. The Illusion of Bitcoin: Code, Control, and Concentration</h2>
-  <h3>1. Governance by a Handful of Developers</h3>
-  <p>
-    Despite being open-source, Bitcoin Core — the software that defines the protocol — is maintained by <strong>a tiny group of core developers</strong>. At any given time, <strong>fewer than five administrators</strong> have the power to merge code changes, approve updates, and shape the future of the network.
-  </p>
-  <p>
-    While no one can force nodes to upgrade, in practice, the community follows the lead of this small, unelected group — many of whom are funded by private corporations like <strong>Block (formerly Square)</strong> or academic institutions tied to U.S. interests. This is not decentralized governance. It is <strong>technocratic oligarchy</strong> — a quiet concentration of power masked by open-source idealism.
-  </p>
-
-  <h3>2. Mining: The Myth of Distributed Security</h3>
-  <p>
-    Bitcoin’s proof-of-work system is supposed to be secure because mining is distributed. In reality, <strong>six mining pools</strong> — based in the U.S., China, and Europe — have controlled <strong>over 95% of the hash power</strong> for years. This means that a <strong>handful of entities</strong> could, in theory, collude to reverse transactions or censor blocks.
-  </p>
-  <p>
-    Moreover, mining is dominated by <strong>ASIC chips</strong> produced by a few companies (like Bitmain), and electricity access is concentrated in regions with cheap power — often under state influence. The idea that “anyone can mine” is a fantasy. The reality is <strong>industrial-scale mining controlled by a few players</strong>.
+    <span data-lang="en">From Bitcoin’s reliance on NSA cryptography to stablecoins’ entanglement with U.S. Treasury debt, the so-called “decentralized” financial revolution is, in reality, <strong>a new chapter in American financial hegemony</strong> — digitized, tokenized, and repackaged for the 21st century.</span>
+    <span data-lang="ar">من اعتماد البيتكوين على التشفير التابع لوكالة الأمن القومي (NSA)، إلى تشابك العملات المستقرة بديون الخزانة الأمريكية، فإن الثورة المالية "اللامركزية" ليست في الحقيقة سوى <strong>فصل جديد من الهيمنة المالية الأمريكية</strong> – مُرقمنة، ومُجزأة، وتم إعادة تغليفها للقرن الحادي والعشرين.</span>
   </p>
 
-  <h3>3. Ownership: Digital Feudalism</h3>
+  <h2>
+    <span data-lang="en">I. The Illusion of Bitcoin: Code, Control, and Concentration</span>
+    <span data-lang="ar">أولاً: وهم البيتكوين: الكود، والسيطرة، والتركيز</span>
+  </h2>
+  <h3>
+    <span data-lang="en">1. Governance by a Handful of Developers</span>
+    <span data-lang="ar">1. الحوكمة على يد حفنة من المطورين</span>
+  </h3>
   <p>
-    On-chain data consistently shows that <strong>the top 1.86% of Bitcoin addresses hold over 90% of all BTC</strong>. This level of wealth concentration exceeds even the most unequal traditional economies.
+    <span data-lang="en">Despite being open-source, Bitcoin Core — the software that defines the protocol — is maintained by <strong>a tiny group of core developers</strong>. At any given time, <strong>fewer than five administrators</strong> have the power to merge code changes, approve updates, and shape the future of the network.</span>
+    <span data-lang="ar">رغم كونه مفتوح المصدر، فإن برنامج بتكوين كور – الذي يُعرّف البروتوكول – يُدار من قبل <strong>مجموعة صغيرة جداً من المطورين الأساسيين</strong>. في أي لحظة، يمتلك <strongأقل من خمسة مسؤولين</strong> القدرة على دمج التغييرات، واعتماد التحديثات، وتشكيل مستقبل الشبكة.</span>
   </p>
   <p>
-    Entities like <strong>MicroStrategy</strong>, <strong>Tesla</strong>, and anonymous early miners control vast reserves. When these whales move, the market trembles. This is not financial democracy — it is <strong>digital feudalism</strong>, where a small elite holds disproportionate power over supply, price, and narrative.
+    <span data-lang="en">While no one can force nodes to upgrade, in practice, the community follows the lead of this small, unelected group — many of whom are funded by private corporations like <strong>Block (formerly Square)</strong> or academic institutions tied to U.S. interests. This is not decentralized governance. It is <strong>technocratic oligarchy</strong> — a quiet concentration of power masked by open-source idealism.</span>
+    <span data-lang="ar">ورغم أنه لا يمكن لأحد إجبار العُقد على التحديث، إلا أن المجتمع عملياً يتبع قيادة هذه المجموعة الصغيرة غير المنتخبة – والعديد منهم يُموّل من شركات خاصة مثل <strong>Block (سابقاً Square)</strong> أو مؤسسات أكاديمية مرتبطة بمصالح أمريكية. هذه ليست حوكمة لامركزية. بل هي <strong>أوليغارشية تقنية</strong> – تركيز صامت للسلطة يُخفيه المثالية المحيطة بالمصادر المفتوحة.</span>
   </p>
 
-  <h3>4. Dependence on U.S. Infrastructure</h3>
+  <h3>
+    <span data-lang="en">2. Mining: The Myth of Distributed Security</span>
+    <span data-lang="ar">2. التعدين: أسطورة الأمان الموزع</span>
+  </h3>
   <p>
-    Bitcoin runs on:
+    <span data-lang="en">Bitcoin’s proof-of-work system is supposed to be secure because mining is distributed. In reality, <strong>six mining pools</strong> — based in the U.S., China, and Europe — have controlled <strong>over 95% of the hash power</strong> for years. This means that a <strong>handful of entities</strong> could, in theory, collude to reverse transactions or censor blocks.</span>
+    <span data-lang="ar">يُفترض أن نظام إثبات العمل (Proof-of-Work) الخاص بالبيتكوين آمن لأنه موزع. في الواقع، فإن <strong>ستة مجمعات تعدين</strong> – مقرها في الولايات المتحدة والصين وأوروبا – تسيطر على <strong>أكثر من 95٪ من قوة التجزئة (hash power)</strong> منذ سنوات. وهذا يعني أن <strong>مجموعة صغيرة من الكيانات</strong> يمكنها نظرياً التآمر لعكس المعاملات أو منع الكتل.</span>
+  </p>
+  <p>
+    <span data-lang="en">Moreover, mining is dominated by <strong>ASIC chips</strong> produced by a few companies (like Bitmain), and electricity access is concentrated in regions with cheap power — often under state influence. The idea that “anyone can mine” is a fantasy. The reality is <strong>industrial-scale mining controlled by a few players</strong>.</span>
+    <span data-lang="ar">علاوة على ذلك، يهيمن على التعدين <strong>شرائح ASIC</strong> التي تنتجها شركات قليلة (مثل Bitmain)، ويتركز الوصول إلى الكهرباء في مناطق ذات طاقة رخيصة – غالبًا تحت تأثير الدولة. فكرة أن "أي شخص يمكنه التعدين" هي خرافة. والواقع هو <strong>تعدين على نطاق صناعي تتحكم فيه قوى قليلة</strong>.</span>
+  </p>
+
+  <h3>
+    <span data-lang="en">3. Ownership: Digital Feudalism</span>
+    <span data-lang="ar">3. الملكية: الإقطاع الرقمي</span>
+  </h3>
+  <p>
+    <span data-lang="en">On-chain data consistently shows that <strong>the top 1.86% of Bitcoin addresses hold over 90% of all BTC</strong>. This level of wealth concentration exceeds even the most unequal traditional economies.</span>
+    <span data-lang="ar">تُظهر البيانات على الشبكة (on-chain) باستمرار أن <strong>أعلى 1.86٪ من عناوين البيتكوين تمتلك أكثر من 90٪ من إجمالي البيتكوين</strong>. هذه الكثافة في الثروة تفوق حتى أكثر الاقتصادات التقليدية تفاوتاً.</span>
+  </p>
+  <p>
+    <span data-lang="en">Entities like <strong>MicroStrategy</strong>, <strong>Tesla</strong>, and anonymous early miners control vast reserves. When these whales move, the market trembles. This is not financial democracy — it is <strong>digital feudalism</strong>, where a small elite holds disproportionate power over supply, price, and narrative.</span>
+    <span data-lang="ar">تتحكم كيانات مثل <strong>MicroStrategy</strong> و<strong>Tesla</strong> وعمال مناجم مبكرية مجهولة الهوية في احتياطيات شاسعة. وعندما تتحرك هذه "الحيتان"، يرتجف السوق. هذا ليس ديمقراطية مالية – بل هو <strong>إقطاع رقمي</strong>، حيث يمتلك نخبة صغيرة قوة غير متناسبة على المعروض والسعر والرواية السائدة.</span>
+  </p>
+
+  <h3>
+    <span data-lang="en">4. Dependence on U.S. Infrastructure</span>
+    <span data-lang="ar">4. الاعتماد على البنية التحتية الأمريكية</span>
+  </h3>
+  <p>
+    <span data-lang="en">Bitcoin runs on:</span>
+    <span data-lang="ar">يعمل البيتكوين على:</span>
   </p>
   <ul>
-    <li><strong>SHA-256</strong>, a cryptographic hash function developed by the <strong>U.S. National Security Agency (NSA)</strong>.</li>
-    <li>The <strong>global internet</strong>, largely routed through U.S.-controlled infrastructure.</li>
-    <li><strong>U.S. dollar pricing</strong>, with nearly all trading pairs denominated in USD.</li>
-    <li><strong>Monetary policy</strong> set by the <strong>Federal Reserve</strong>, which flooded the world with cheap money — inflating Bitcoin’s price.</li>
+    <li><span data-lang="en"><strong>SHA-256</strong>, a cryptographic hash function developed by the <strong>U.S. National Security Agency (NSA)</strong>.</span>
+        <span data-lang="ar"><strong>SHA-256</strong>، وهي دالة تجزئة تشفيرية طوّرتها <strong>وكالة الأمن القومي الأمريكية (NSA)</strong>.</span></li>
+    <li><span data-lang="en">The <strong>global internet</strong>, largely routed through U.S.-controlled infrastructure.</span>
+        <span data-lang="ar"><strong>الإنترنت العالمي</strong>، الذي يُوجَّه إلى حد كبير عبر بنية تحتية تسيطر عليها الولايات المتحدة.</span></li>
+    <li><span data-lang="en"><strong>U.S. dollar pricing</strong>, with nearly all trading pairs denominated in USD.</span>
+        <span data-lang="ar"><strong>تسعير بالدولار الأمريكي</strong>، حيث تُسعَّر معظم أزواج التداول بالدولار.</span></li>
+    <li><span data-lang="en"><strong>Monetary policy</strong> set by the <strong>Federal Reserve</strong>, which flooded the world with cheap money — inflating Bitcoin’s price.</span>
+        <span data-lang="ar"><strong>السياسة النقدية</strong> التي تضعها <strong>البنك الفيدرالي الأمريكي (الاحتياطي الفيدرالي)</strong>، الذي غمر العالم بسيولة رخيصة – مما أدى إلى ارتفاع سعر البيتكوين.</span></li>
   </ul>
   <p>
-    Bitcoin may oppose central banks in theory, but in practice, it <strong>depends on the Fed’s liquidity</strong> and the <strong>U.S. tech stack</strong> to function. Remove these, and the system collapses.
+    <span data-lang="en">Bitcoin may oppose central banks in theory, but in practice, it <strong>depends on the Fed’s liquidity</strong> and the <strong>U.S. tech stack</strong> to function. Remove these, and the system collapses.</span>
+    <span data-lang="ar">قد يعارض البيتكوين البنوك المركزية نظرياً، لكن عملياً فإنه <strong>يعتمد على سيولة الفيدرالي</strong> و<strong>البنية التحتية التكنولوجية الأمريكية</strong> ليعمل. احذف هذه العناصر، وسينهار النظام.</span>
   </p>
 
-  <h2>II. Stablecoins: The Privatization of the Dollar Empire</h2>
+  <h2>
+    <span data-lang="en">II. Stablecoins: The Privatization of the Dollar Empire</span>
+    <span data-lang="ar">ثانياً: العملات المستقرة: خصخصة إمبراطورية الدولار</span>
+  </h2>
   <p>
-    If Bitcoin is the myth of decentralized money, <strong>stablecoins</strong> are the myth of decentralized finance.
+    <span data-lang="en">If Bitcoin is the myth of decentralized money, <strong>stablecoins</strong> are the myth of decentralized finance.</span>
+    <span data-lang="ar">إذا كان البيتكوين هو أسطورة المال اللامركزي، فإن <strong>العملات المستقرة</strong> هي أسطورة التمويل اللامركزي.</span>
   </p>
   <p>
-    Stablecoins like <strong>USDT (Tether)</strong> and <strong>USDC (Circle)</strong> claim to offer “digital dollars” — fast, global, and open. But they are, in fact, <strong>a privatized extension of the U.S. financial system</strong> — one that deepens, rather than disrupts, dollar dominance.
+    <span data-lang="en">Stablecoins like <strong>USDT (Tether)</strong> and <strong>USDC (Circle)</strong> claim to offer “digital dollars” — fast, global, and open. But they are, in fact, <strong>a privatized extension of the U.S. financial system</strong> — one that deepens, rather than disrupts, dollar dominance.</span>
+    <span data-lang="ar">تُعدّ عملات مثل <strong>USDT (تيذر)</strong> و<strong>USDC (سيركل)</strong> بأنها "دولارات رقمية" – سريعة وعالمية ومفتوحة. لكنها في الواقع <strong>امتداد خاص للنظام المالي الأمريكي</strong> – يعمل على تعميق هيمنة الدولار، لا على تقويضها.</span>
   </p>
 
-  <h3>1. Backed by U.S. Treasuries — Not Independence</h3>
+  <h3>
+    <span data-lang="en">1. Backed by U.S. Treasuries — Not Independence</span>
+    <span data-lang="ar">1. مدعومة بسندات الخزانة الأمريكية – وليس بالاستقلال</span>
+  </h3>
   <p>
-    Most dollar-pegged stablecoins are now primarily backed by <strong>U.S. Treasury bonds</strong>, not cash. This means:
+    <span data-lang="en">Most dollar-pegged stablecoins are now primarily backed by <strong>U.S. Treasury bonds</strong>, not cash. This means:</span>
+    <span data-lang="ar">تُدعم معظم العملات المستقرة المرتبطة بالدولار حالياً بشكل أساسي بـ <strong>سندات الخزانة الأمريكية</strong>، وليس بالنقود. وهذا يعني:</span>
   </p>
   <ul>
-    <li>Every new stablecoin issued increases demand for U.S. government debt.</li>
-    <li>The U.S. Treasury benefits from <strong>private-sector financing</strong> of its deficit.</li>
-    <li>The system creates a <strong>feedback loop</strong>: more stablecoins → more Treasury demand → lower borrowing costs → more deficit spending.</li>
+    <li><span data-lang="en">Every new stablecoin issued increases demand for U.S. government debt.</span>
+        <span data-lang="ar">كل عملة مستقرة جديدة تُصدر تزيد من الطلب على ديون الحكومة الأمريكية.</span></li>
+    <li><span data-lang="en">The U.S. Treasury benefits from <strong>private-sector financing</strong> of its deficit.</span>
+        <span data-lang="ar">تستفيد وزارة الخزانة الأمريكية من <strong>التمويل الخاص</strong> للعجز المالي.</span></li>
+    <li><span data-lang="en">The system creates a <strong>feedback loop</strong>: more stablecoins → more Treasury demand → lower borrowing costs → more deficit spending.</span>
+        <span data-lang="ar">يخلق النظام <strong>حلقة تغذية راجعة</strong>: عملات مستقرة أكثر → طلب أكبر على سندات الخزانة → تكاليف اقتراض أقل → إنفاق مالي أكبر.</span></li>
   </ul>
   <p>
-    This is not de-dollarization. It is <strong>dollarization via crypto</strong> — what some economists call the <strong>“Stablecoin Standard.”</strong>
+    <span data-lang="en">This is not de-dollarization. It is <strong>dollarization via crypto</strong> — what some economists call the <strong>“Stablecoin Standard.”</strong></span>
+    <span data-lang="ar">هذا ليس تحرراً من الدولار. بل هو <strong>تعميق لسيطرة الدولار عبر التمويل الرقمي</strong> – ما يسميه بعض الاقتصاديين "معيار العملات المستقرة" (<strong>Stablecoin Standard</strong>).</span>
   </p>
 
-  <h3>2. Controlled by Permission</h3>
+  <h3>
+    <span data-lang="en">2. Controlled by Permission</span>
+    <span data-lang="ar">2. خاضعة للرقابة والتحكم</span>
+  </h3>
   <p>
-    Stablecoin issuers are <strong>regulated U.S. companies</strong>. They:
+    <span data-lang="en">Stablecoin issuers are <strong>regulated U.S. companies</strong>. They:</span>
+    <span data-lang="ar">مُصدرات العملات المستقرة هم <strong>شركات أمريكية تخضع للتنظيم</strong>. و:</span>
   </p>
   <ul>
-    <li>Require <strong>KYC/AML compliance</strong>.</li>
-    <li>Can <strong>freeze or blacklist wallets</strong>.</li>
-    <li>Operate under <strong>Treasury Department oversight</strong>.</li>
+    <li><span data-lang="en">Require <strong>KYC/AML compliance</strong>.</span>
+        <span data-lang="ar">يتطلبون <strong>التحقق من الهوية ومكافحة غسل الأموال (KYC/AML)</strong>.</span></li>
+    <li><span data-lang="en">Can <strong>freeze or blacklist wallets</strong>.</span>
+        <span data-lang="ar">يستطيعون <strong>تجميد المحافظ أو إدراجها في القوائم السوداء</strong>.</span></li>
+    <li><span data-lang="en">Operate under <strong>Treasury Department oversight</strong>.</span>
+        <span data-lang="ar">يعملون تحت <strong>إشراف وزارة الخزانة الأمريكية</strong>.</span></li>
   </ul>
   <p>
-    In 2021, the U.S. Treasury proposed rules requiring stablecoin transactions over $10 to be reported — a move toward full surveillance. There is <strong>no financial privacy</strong>, and <strong>no immunity from state control</strong>.
+    <span data-lang="en">In 2021, the U.S. Treasury proposed rules requiring stablecoin transactions over $10 to be reported — a move toward full surveillance. There is <strong>no financial privacy</strong>, and <strong>no immunity from state control</strong>.</span>
+    <span data-lang="ar">في عام 2021، اقترحت وزارة الخزانة الأمريكية قواعد تفرض الإبلاغ عن أي معاملة بعملة مستقرة تزيد قيمتها عن 10 دولارات – خطوة نحو المراقبة الكاملة. لا توجد <strong>خصوصية مالية</strong>، ولا <strong>حصانة من السيطرة الحكومية</strong>.</span>
   </p>
   <p>
-    When the SEC sued Binance, it froze <strong>$24 million in USDC</strong> — proving that stablecoins are <strong>not beyond government reach</strong>.
+    <span data-lang="en">When the SEC sued Binance, it froze <strong>$24 million in USDC</strong> — proving that stablecoins are <strong>not beyond government reach</strong>.</span>
+    <span data-lang="ar">عندما رفعت لجنة الأوراق المالية والبورصات (SEC) دعوى ضد Binance، جمدت <strong>24 مليون دولار من USDC</strong> – مما يثبت أن العملات المستقرة <strong>ليست خارج نطاق الدولة</strong>.</span>
   </p>
 
-  <h3>3. A Fragile House of Cards</h3>
+  <h3>
+    <span data-lang="en">3. A Fragile House of Cards</span>
+    <span data-lang="ar">3. هيكل هش من الأوراق</span>
+  </h3>
   <p>
-    Stablecoins promise $1 = $1. But this peg depends on:
+    <span data-lang="en">Stablecoins promise $1 = $1. But this peg depends on:</span>
+    <span data-lang="ar">تعدّ العملات المستقرة بـ 1 دولار = 1 دولار. لكن هذا التثبيت يعتمد على:</span>
   </p>
   <ul>
-    <li>Confidence in U.S. Treasuries.</li>
-    <li>Stability of the banking system (e.g., USDC lost its peg when Silicon Valley Bank collapsed).</li>
-    <li>Continuous demand for dollar assets.</li>
+    <li><span data-lang="en">Confidence in U.S. Treasuries.</span>
+        <span data-lang="ar">الثقة في سندات الخزانة الأمريكية.</span></li>
+    <li><span data-lang="en">Stability of the banking system (e.g., USDC lost its peg when Silicon Valley Bank collapsed).</span>
+        <span data-lang="ar">استقرار النظام المصرفي (مثل فقدان USDC لتثبيتها عندما انهار بنك Silicon Valley).</span></li>
+    <li><span data-lang="en">Continuous demand for dollar assets.</span>
+        <span data-lang="ar">الطلب المستمر على الأصول الدولارية.</span></li>
   </ul>
   <p>
-    If the U.S. debt crisis worsens — say, due to a $4 trillion “Big Beautiful Bill” under a future Trump administration — the foundation cracks. <strong>Stablecoins don’t solve the problem. They amplify it.</strong>
+    <span data-lang="en"><strong>Stablecoins don’t solve the problem. They amplify it.</strong></span>
+    <span data-lang="ar"><strong>العملات المستقرة لا تحل المشكلة. بل تضخمها.</strong></span>
   </p>
 
-  <h2>III. The U.S. Strategy: Tokenizing the Empire</h2>
+  <h2>
+    <span data-lang="en">III. The U.S. Strategy: Tokenizing the Empire</span>
+    <span data-lang="ar">ثالثاً: الاستراتيجية الأمريكية: ترميز الإمبراطورية</span>
+  </h2>
   <p>
-    The U.S. government did not fight crypto — it <strong>co-opted it</strong>.
+    <span data-lang="en">The U.S. government did not fight crypto — it <strong>co-opted it</strong>.</span>
+    <span data-lang="ar">لم تُحارب الحكومة الأمريكية العملات الرقمية – بل <strong>استوعبتها</strong>.</span>
   </p>
   <p>
-    Rather than banning stablecoins, Washington is <strong>encouraging their growth</strong> — because they:
+    <span data-lang="en">Rather than banning stablecoins, Washington is <strong>encouraging their growth</strong> — because they:</span>
+    <span data-lang="ar">بدلاً من حظر العملات المستقرة، تشجع واشنطن على نموها – لأنها:</span>
   </p>
   <ul>
-    <li><strong>Extend dollar dominance</strong> into the digital economy.</li>
-    <li><strong>Finance U.S. debt</strong> through private-sector demand.</li>
-    <li><strong>Bypass rivals</strong> like China’s digital yuan (e-CNY), which offers an alternative but comes with state surveillance.</li>
+    <li><span data-lang="en"><strong>Extend dollar dominance</strong> into the digital economy.</span>
+        <span data-lang="ar"><strong>تمدد هيمنة الدولار</strong> إلى الاقتصاد الرقمي.</span></li>
+    <li><span data-lang="en"><strong>Finance U.S. debt</strong> through private-sector demand.</span>
+        <span data-lang="ar"><strong>تمول الدين الأمريكي</strong> من خلال الطلب من القطاع الخاص.</span></li>
+    <li><span data-lang="en"><strong>Bypass rivals</strong> like China’s digital yuan (e-CNY), which offers an alternative but comes with state surveillance.</span>
+        <span data-lang="ar"><strong>تحيد المنافسين</strong> مثل اليوان الرقمي الصيني (e-CNY)، الذي يقدّم بديلاً لكنه يأتي مع مراقبة حكومية.</span></li>
   </ul>
   <p>
-    Treasury Secretary Scott Bessent was explicit:  
-    <blockquote style="border-left: 3px solid var(--secondary); padding-left: 15px; margin: 1.5rem 0; font-style: italic;">
-      “A thriving stablecoin ecosystem will drive demand from the private sector for US Treasuries, which back stablecoins.”
-    </blockquote>
-    This is not a bug. It is <strong>a feature of U.S. financial strategy</strong>.
+    <span data-lang="en">Treasury Secretary Scott Bessent was explicit:  
+    <blockquote><strong>“A thriving stablecoin ecosystem will drive demand from the private sector for US Treasuries, which back stablecoins.”</strong></blockquote>
+    This is not a bug. It is <strong>a feature of U.S. financial strategy</strong>.</span>
+    <span data-lang="ar">كان وزير الخزانة سكوت بيسنت صريحاً:  
+    <blockquote><strong>“سوف يُحفّز ازدهار نظام العملات المستقرة الطلب من القطاع الخاص على سندات الخزانة الأمريكية، التي تدعم هذه العملات.”</strong></blockquote>
+    هذا ليس عيباً. بل هو <strong>مكوّن متعمّد من الاستراتيجية المالية الأمريكية</strong>.</span>
   </p>
   <p>
-    While countries like China, Russia, and members of BRICS seek to de-dollarize, the U.S. is <strong>tokenizing the dollar</strong> — embedding it into blockchain, DeFi, and global crypto trade. The result? <strong>The dollar remains the default, even in systems designed to escape it.</strong>
+    <span data-lang="en">While countries like China, Russia, and members of BRICS seek to de-dollarize, the U.S. is <strong>tokenizing the dollar</strong> — embedding it into blockchain, DeFi, and global crypto trade. The result? <strong>The dollar remains the default, even in systems designed to escape it.</strong></span>
+    <span data-lang="ar">بينما تسعى دول مثل الصين وروسيا وأعضاء مجموعة بريكس للتحرر من الدولار، فإن الولايات المتحدة <strong>تُرمّز الدولار</strong> – فتُدمجه في البلوك تشين، والتمويل اللامركزي (DeFi)، والتجارة العالمية بالعملات الرقمية. والنتيجة؟ <strong>يبقى الدولار هو الخيار الافتراضي، حتى في الأنظمة المصممة للهروب منه.</strong></span>
   </p>
 
-  <h2>IV. The Digital Yuan: A Mirror, Not a Solution</h2>
+  <h2>
+    <span data-lang="en">IV. The Digital Yuan: A Mirror, Not a Solution</span>
+    <span data-lang="ar">رابعاً: اليوان الرقمي: مرآة، وليس حلاً</span>
+  </h2>
   <p>
-    China’s <strong>digital yuan (e-CNY)</strong> is often presented as the anti-Bitcoin — a state-controlled CBDC. But it is also a warning.
+    <span data-lang="en">China’s <strong>digital yuan (e-CNY)</strong> is often presented as the anti-Bitcoin — a state-controlled CBDC. But it is also a warning.</span>
+    <span data-lang="ar">يُقدّم اليوان الرقمي الصيني (<strong>e-CNY</strong>) غالباً كنقيض للبيتكوين – عملة رقمية مركزية تابعة للدولة. لكنه أيضاً تحذير.</span>
   </p>
   <p>
-    e-CNY offers:
-  </p>
-  <ul>
-    <li>Fast, cheap transactions.</li>
-    <li>No reliance on SWIFT.</li>
-    <li>Full government control — including the ability to <strong>freeze accounts, expire money, and track every transaction</strong>.</li>
-  </ul>
-  <p>
-    Many nations hesitate to adopt it — not because it’s inefficient, but because it <strong>trades U.S. financial dominance for Chinese surveillance finance</strong>.
-  </p>
-  <p>
-    Yet, ironically, <strong>U.S. stablecoins are not truly free either</strong>. They are <strong>censorable, traceable, and permissioned</strong> — just under a different model.
-  </p>
-  <p>
-    The choice is not between <strong>freedom and control</strong>, but between <strong>two forms of centralized power</strong>:
+    <span data-lang="en">e-CNY offers:</span>
+    <span data-lang="ar">يقدّم e-CNY:</span>
   </p>
   <ul>
-    <li><strong>American-style</strong>: private companies, light regulation, but ultimate state oversight.</li>
-    <li><strong>Chinese-style</strong>: direct state control, no pretense of decentralization.</li>
+    <li><span data-lang="en">Fast, cheap transactions.</span>
+        <span data-lang="ar">معاملات سريعة ورخيصة.</span></li>
+    <li><span data-lang="en">No reliance on SWIFT.</span>
+        <span data-lang="ar">عدم اعتماد على نظام SWIFT.</span></li>
+    <li><span data-lang="en">Full government control — including the ability to <strong>freeze accounts, expire money, and track every transaction</strong>.</span>
+        <span data-lang="ar">سيطرة حكومية كاملة – تشمل القدرة على <strong>تجميد الحسابات، وانتهاء صلاحية المال، وتتبع كل معاملة</strong>.</span></li>
   </ul>
   <p>
-    Neither offers true financial sovereignty.
+    <span data-lang="en">Many nations hesitate to adopt it — not because it’s inefficient, but because it <strong>trades U.S. financial dominance for Chinese surveillance finance</strong>.</span>
+    <span data-lang="ar">تحجم العديد من الدول عن اعتماده – ليس لأنها غير فعالة، بل لأنها <strong>تُبادل هيمنة النظام المالي الأمريكي بمراقبة مالية صينية</strong>.</span>
+  </p>
+  <p>
+    <span data-lang="en">Yet, ironically, <strong>U.S. stablecoins are not truly free either</strong>. They are <strong>censorable, traceable, and permissioned</strong> — just under a different model.</span>
+    <span data-lang="ar">لكن، وبحكم المفارقة، <strong>العملات المستقرة الأمريكية ليست حرة حقاً</strong>. فهي <strong>قابلة للرقابة، وقابلة للتتبع، وتخضع للإذن</strong> – فقط بنموذج مختلف.</span>
+  </p>
+  <p>
+    <span data-lang="en">The choice is not between <strong>freedom and control</strong>, but between <strong>two forms of centralized power</strong>:</span>
+    <span data-lang="ar">الاختيار ليس بين <strong>الحرية والسيطرة</strong>، بل بين <strong>نوعين من السلطة المركزية</strong>:</span>
+  </p>
+  <ul>
+    <li><span data-lang="en"><strong>American-style</strong>: private companies, light regulation, but ultimate state oversight.</span>
+        <span data-lang="ar"><strong>النمط الأمريكي</strong>: شركات خاصة، تنظيم خفيف، لكن مع رقابة حكومية نهائية.</span></li>
+    <li><span data-lang="en"><strong>Chinese-style</strong>: direct state control, no pretense of decentralization.</span>
+        <span data-lang="ar"><strong>النمط الصيني</strong>: سيطرة مباشرة من الدولة، دون تظاهر باللامركزية.</span></li>
+  </ul>
+  <p>
+    <span data-lang="en">Neither offers true financial sovereignty.</span>
+    <span data-lang="ar">لا يقدّم أي منهما سيادة مالية حقيقية.</span>
   </p>
 
-  <h2>V. Toward a Real Decentralization?</h2>
+  <h2>
+    <span data-lang="en">V. Toward a Real Decentralization?</span>
+    <span data-lang="ar">خامساً: نحو لامركزية حقيقية؟</span>
+  </h2>
   <p>
-    So what would <strong>true decentralization</strong> look like?
+    <span data-lang="en">So what would <strong>true decentralization</strong> look like?</span>
+    <span data-lang="ar">إذاً، كيف ستبدو <strong>اللامركزية الحقيقية</strong>؟</span>
   </p>
   <p>
-    It would require:
+    <span data-lang="en">It would require:</span>
+    <span data-lang="ar">ستتطلب:</span>
   </p>
   <ul>
-    <li><strong>Truly open governance</strong> — not 5 devs, but decentralized decision-making via transparent, on-chain voting.</li>
-    <li><strong>Distributed mining and validation</strong> — not pools, but millions of small participants.</li>
-    <li><strong>Wealth dispersion</strong> — mechanisms to prevent hoarding and oligarchy.</li>
-    <li><strong>Non-sovereign backing</strong> — stablecoins tied to commodity baskets, not U.S. debt.</li>
-    <li><strong>Independent infrastructure</strong> — open-source cryptography not tied to state agencies, mesh networks, local energy.</li>
+    <li><span data-lang="en"><strong>Truly open governance</strong> — not 5 devs, but decentralized decision-making via transparent, on-chain voting.</span>
+        <span data-lang="ar"><strong>حوكمة مفتوحة حقاً</strong> – ليس 5 مطورين، بل اتخاذ قرارات لامركزية عبر تصويت شفاف على البلوك تشين.</span></li>
+    <li><span data-lang="en"><strong>Distributed mining and validation</strong> — not pools, but millions of small participants.</span>
+        <span data-lang="ar"><strong>تعدين وتوثيق موزع</strong> – ليس مجمعات، بل ملايين المشاركين الصغار.</span></li>
+    <li><span data-lang="en"><strong>Wealth dispersion</strong> — mechanisms to prevent hoarding and oligarchy.</span>
+        <span data-lang="ar"><strong>توزيع الثروة</strong> – آليات لمنع الاحتكار والأوليغارشية.</span></li>
+    <li><span data-lang="en"><strong>Non-sovereign backing</strong> — stablecoins tied to commodity baskets, not U.S. debt.</span>
+        <span data-lang="ar"><strong>ضمانات غير سيادية</strong> – عملات مستقرة مرتبطة بسلة سلع، وليس بدين أمريكي.</span></li>
+    <li><span data-lang="en"><strong>Independent infrastructure</strong> — open-source cryptography not tied to state agencies, mesh networks, local energy.</span>
+        <span data-lang="ar"><strong>بنية تحتية مستقلة</strong> – تشفير مفتوح المصدر غير مرتبط بالوكالات الحكومية، وشبكات موزعة، وطاقة محلية.</span></li>
   </ul>
   <p>
-    Projects like <strong>Monero</strong>, <strong>Zcash</strong>, <strong>Decentralized Identity</strong>, and <strong>peer-to-peer exchanges</strong> point the way — but they remain marginal.
+    <span data-lang="en">Projects like <strong>Monero</strong>, <strong>Zcash</strong>, <strong>Decentralized Identity</strong>, and <strong>peer-to-peer exchanges</strong> point the way — but they remain marginal.</span>
+    <span data-lang="ar">تشير مشاريع مثل <strong>Monero</strong> و<strong>Zcash</strong> و<strong>الهوية اللامركزية</strong> و<strong>منصات التبادل الند لنظير</strong> إلى الطريق الصحيح – لكنها تبقى هامشية.</span>
   </p>
   <p>
-    Until then, <strong>decentralization remains a marketing slogan</strong>, not a reality.
+    <span data-lang="en">Until then, <strong>decentralization remains a marketing slogan</strong>, not a reality.</span>
+    <span data-lang="ar">وحتى ذلك الحين، تظل <strong>اللامركزية مجرد شعار تسويقي</strong>، وليس واقعاً.</span>
   </p>
 
-  <h2>Conclusion: The Myth and the Mission</h2>
+  <h2>
+    <span data-lang="en">Conclusion: The Myth and the Mission</span>
+    <span data-lang="ar">الخاتمة: الوهم والرسالة</span>
+  </h2>
   <p>
-    The myth of decentralization is not harmless. It is <strong>dangerous</strong> — because it distracts us from the real work of building <strong>truly open, fair, and resilient systems</strong>.
+    <span data-lang="en">The myth of decentralization is not harmless. It is <strong>dangerous</strong> — because it distracts us from the real work of building <strong>truly open, fair, and resilient systems</strong>.</span>
+    <span data-lang="ar">وهم اللامركزية ليس بريئاً. بل هو <strong>خطير</strong> – لأنه يصرف انتباهنا عن العمل الحقيقي المتمثل في بناء <strong>أنظمة مفتوحة وعادلة ومرنة حقاً</strong>.</span>
   </p>
   <p>
-    Bitcoin and stablecoins did not break the system.  
-    They <strong>rebuilt it in digital form</strong> — with the same power structures, just less transparency.
+    <span data-lang="en">Bitcoin and stablecoins did not break the system.  
+    They <strong>rebuilt it in digital form</strong> — with the same power structures, just less transparency.</span>
+    <span data-lang="ar">البيتكوين والعملات المستقرة لم يكسرا النظام.  
+بل <strong>أعادا بناءه بالشكل الرقمي</strong> – مع نفس الهياكل القوية، ولكن بشفافية أقل.</span>
   </p>
   <p>
-    The U.S. dollar is not dying.  
-    It is <strong>evolving</strong> — from paper to digital, from banks to blockchains, from Treasuries to stablecoins.
+    <span data-lang="en">The U.S. dollar is not dying.  
+    It is <strong>evolving</strong> — from paper to digital, from banks to blockchains, from Treasuries to stablecoins.</span>
+    <span data-lang="ar">الدولار الأمريكي ليس في طريقة إلى الزوال.  
+بل هو <strong>في تطور</strong> – من الورق إلى الرقمي، من البنوك إلى البلوك تشين، من سندات الخزانة إلى العملات المستقرة.</span>
   </p>
   <p>
-    And the greatest irony?  
-    <strong>The revolution was monetized — and the empire issued the receipt.</strong>
+    <span data-lang="en">And the greatest irony?  
+    <strong>The revolution was monetized — and the empire issued the receipt.</strong></span>
+    <span data-lang="ar">وأعظم مفارقة؟  
+<strong>تم تحويل الثورة إلى منتج قابل للشراء، وأصدرت الإمبراطورية الإيصال.</strong></span>
   </p>
   <p>
-    But the critique you’ve raised — about control, concentration, and dependency — is the first step toward something real.
+    <span data-lang="en">But the critique you’ve raised — about control, concentration, and dependency — is the first step toward something real.</span>
+    <span data-lang="ar">لكن النقد الذي أثارته – حول السيطرة، والتركيز، والاعتماد – هو الخطوة الأولى نحو شيء حقيقي.</span>
   </p>
   <p>
-    Because <strong>only when we admit the myth can we begin to build the truth</strong>.
+    <span data-lang="en">Because <strong>only when we admit the myth can we begin to build the truth</strong>.</span>
+    <span data-lang="ar">لأن <strong>فقط عندما نعترف بالوهم يمكننا أن نبدأ في بناء الحقيقة</strong>.</span>
   </p>
   <p>
-    And perhaps, one day, we’ll create a financial system that is not just <em>called</em> decentralized — but actually <strong>is</strong>.
+    <span data-lang="en">And perhaps, one day, we’ll create a financial system that is not just <em>called</em> decentralized — but actually <strong>is</strong>.</span>
+    <span data-lang="ar">وربما، يوماً ما، سنُنشئ نظاماً مالياً ليس فقط <em>يُسمى</em> لامركزياً – بل هو <strong>في الحقيقة كذلك</strong>.</span>
   </p>
   <p>
-    Until then, we must keep asking:  
+    <span data-lang="en">Until then, we must keep asking:  
     <em>Who really controls the keys?</em>  
     <em>Who holds the power?</em>  
-    <em>And who benefits from the story we’re being told?</em>
+    <em>And who benefits from the story we’re being told?</em></span>
+    <span data-lang="ar">وحتى ذلك الحين، يجب أن نستمر في السؤال:  
+<em>من يتحكم فعلاً بالمفاتيح؟</em>  
+<em>من يملك القوة؟</em>  
+<em>ومَن يستفيد من القصة التي تُروى لنا؟</em></span>
   </p>
   <p>
-    The answers may not be on the blockchain.  
-    But they are the only ones that matter.
+    <span data-lang="en">The answers may not be on the blockchain.  
+    But they are the only ones that matter.</span>
+    <span data-lang="ar">قد لا تكون الإجابات على البلوك تشين.  
+لكنها الإجابات الوحيدة التي تهم.</span>
   </p>
 
   <footer>
-    © 2025 Omar Alsaadi. This essay is open to share and republish with attribution.
+    <span data-lang="en">© 2025 Omar Alsaadi. This essay is open to share and republish with attribution.</span>
+    <span data-lang="ar">© 2025 عمر السعدي. يُسمح بمشاركة هذا المقال وإعادة نشره مع الإسناد.</span>
   </footer>
 
+  <script>
+    // Set default language from localStorage or fallback to 'en'
+    const savedLang = localStorage.getItem('preferredLang') || 'en';
+    setLanguage(savedLang);
+
+    function setLanguage(lang) {
+      // Save preference
+      localStorage.setItem('preferredLang', lang);
+
+      // Update HTML lang and dir attributes
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+      // Hide all language spans
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.classList.remove('active-lang');
+      });
+
+      // Show only selected language
+      document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => {
+        el.classList.add('active-lang');
+      });
+    }
+  </script>
 </body>
 </html>
